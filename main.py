@@ -330,10 +330,10 @@ def main():
                 
                 # 시간대 선택
                 while True:
+                    choice = input("\n확인할 시간대를 선택하세요 (1-{}), 종료하려면 q: ".format(len(times)))
+                    if choice.lower() == 'q':
+                        return
                     try:
-                        choice = input("\n확인할 시간대를 선택하세요 (1-{}), 종료하려면 q: ".format(len(times)))
-                        if choice.lower() == 'q':
-                            return
                         choice_idx = int(choice) - 1
                         if 0 <= choice_idx < len(times):
                             selected_time = times[choice_idx][0]

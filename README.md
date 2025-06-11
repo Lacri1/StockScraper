@@ -12,8 +12,7 @@ This project was developed to collect data on top-searched stocks, which is not 
 - **Interactive CLI**: Easy-to-use command line interface with interactive time selection
 - **Persistent Storage**: Data is stored in an SQLite database with timestamps
 - **Duplicate Prevention**: Automatically skips duplicate entries
-- **Cross-platform**: Works on Windows, Linux, and macOS
-- **Scheduling Support**: Set up automated data collection at regular intervals
+- **Cross-platform**: Works on Windows and macOS
 
 ## Installation
 
@@ -77,23 +76,26 @@ python main.py --init
 
 ## Automation Setup
 
-### Windows Task Scheduler Setup
-Run the following script in PowerShell with administrator privileges:
+The script can be scheduled to run automatically every hour using Windows Task Scheduler:
+
+1. Open PowerShell as Administrator
+2. Run the following commands:
    ```powershell
    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+   cd C:\Users\user\IdeaProjects\StockScraper
    .\schedule_windows.ps1
    ```
 
-### Linux/macOS Setup
-1. Open Terminal
-2. Navigate to the project directory
-3. Make the script executable and run it:
-   ```bash
-   chmod +x schedule_linux_macos.sh
-   ./schedule_linux_macos.sh
-   ```
+This will create a scheduled task named "StockScraperHourly" that runs the scraper:
+- Every hour automatically
+- Using your Python virtual environment
+- With administrator privileges
 
-This will set up the script to run every hour at the top of the hour.
+To verify the task is running:
+1. Open Task Scheduler
+2. Look for "StockScraperHourly" in Task Scheduler Library
+3. Check the "Last Run Time" and "Next Run Time" columns
+
 
 ## Data Management
 
