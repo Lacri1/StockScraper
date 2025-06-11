@@ -1,6 +1,9 @@
 # Create a scheduled task to run the stock scraper every hour
 $action = New-ScheduledTaskAction -Execute "python" -Argument "$PSScriptRoot\main.py" -WorkingDirectory $PSScriptRoot
+
+# Set trigger to run every hour, starting immediately
 $trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 1)
+
 $principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -RunLevel Highest -LogonType S4U
 
 # Register the scheduled task
